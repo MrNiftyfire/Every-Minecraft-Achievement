@@ -1,1 +1,974 @@
-h
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Achievements</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Fredoka', sans-serif;
+      background-image: url('Every Achievement Background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: white;
+      text-shadow: 2px 2px 4px black;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 100px auto 40px auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 12px #fff;
+    }
+
+    p {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      margin: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.8);
+    }
+
+    /* Keep your top menu */
+    .top-menu {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background-color: #111;
+      padding: 10px 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    .top-menu summary {
+      list-style: none;
+      cursor: pointer;
+      text-align: center;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .top-menu summary:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff;
+    }
+
+    .top-menu img {
+      width: 30px;
+      height: 30px;
+      display: block;
+      margin: 0 auto 5px;
+      transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .top-menu summary:hover img {
+      filter: brightness(1.3);
+      transform: scale(1.15);
+      box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+    }
+
+    details ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+
+    details[open] ul {
+      max-height: 200px;
+      transition: max-height 0.4s ease-in;
+    }
+
+    .top-menu a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 5px 0;
+      transition: 0.3s;
+    }
+
+    .top-menu a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 8px #ffffff, 0 0 16px #ffffff;
+    }
+
+    body::before {
+      content: "";
+      display: block;
+      height: 60px;
+    }
+
+    /* Icon grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 800px;
+      margin: 40px auto;
+    }
+
+    .icon-grid a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #222;
+      border-radius: 12px;
+      padding: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .icon-grid a img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .icon-grid a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #fff;
+    }
+  </style>
+</head>
+<audio id="bg-music" loop>
+  <source src="Minecraft - Creator (OTS).mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-toggle">
+  🎵 Play Music
+</button>
+
+<script>
+  const music = document.getElementById("bg-music");
+  const toggleBtn = document.getElementById("music-toggle");
+
+  toggleBtn.addEventListener("click", () => {
+    if (music.paused) {
+      music.play();
+      toggleBtn.innerText = "🔇 Pause Music";
+    } else {
+      music.pause();
+      toggleBtn.innerText = "🎵 Play Music";
+    }
+  });
+</script>
+
+<style>
+  #music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #111;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    text-shadow: 2px 2px 4px black;
+    box-shadow: 0 0 10px transparent;
+    transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
+    z-index: 2000;
+  }
+
+  /* Glow to match menu icons */
+  #music-toggle:hover {
+    filter: brightness(1.3);
+    transform: scale(1.15);
+    box-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+  }
+</style>
+<body>  
+
+  <!-- Navigation bar -->
+  <div class="top-menu">
+    <details>
+      <summary><img src="PFP New (Small).png" alt="PFP (Small)">Home</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/My-Youtube-Website/My%20Youtube%20Website.html">Home Page</a></li></ul>
+      <ul><li><a href="https://mrniftyfire.github.io/Get-In-Touch/Get%20In%20Touch.html">GIT</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="LEGA (Small).png" alt="LEGO">LEGO</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Lego-Stop-Motion/Lego%20Stop-Motion.html">LEGO Stop Motion</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Roblox (Small).png" alt="Roblox">Roblox</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Roblox-Site/Roblox.html">Roblox Page</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="GD (Small).png" alt="GD">GD</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/GD-Site/GD%20Site.html">Geometry Dash</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Duolingo (Small).png" alt="Duolingo">Duolingo</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Duolingo-Site/Duolingo.html">Duolingo Page</a></li></ul>
+            <ul><li><a href="https://mrniftyfire.github.io/All-Duolingo-Achievement-Icons/Get%20Every%20Duolingo%20Achievement.html">Duolingo Achievements</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Blooket (Small).png" alt="Blooket">Blooket</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Blooket-Site/Blooket%20Site.html">Blooket Page</a></li></ul>
+      <ul><li><a href="https://mrniftyfire.github.io/HTGEB/HTGEB.html">Get Every Blook</a></li></ul>
+      <ul><li><a href="https://mrniftyfire.github.io/Blooket-Calculator/Blooket%20Calculator">Blooket Calculator</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Minecraft & MSM.png" alt="Minecraft">Minecraft</summary>
+      <ul>
+        <li><a href="https://mrniftyfire.github.io/Minecraft-Site/Minecraft%20Site.html">Minecraft Page</a></li>
+        <li><a href="https://mrniftyfire.github.io/Minecraft-Story-Mode/Minecraft%20Story%20Mode.html">MSM</a></li>
+        <li><a href="https://mrniftyfire.github.io/Every-Minecraft-Achievement/EMAP.html">Minecraft Achievements</a></li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><img src="Chess (Small).png" alt="Chess">Chess</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Chess-Site/Chess%20site.html">Chess Page</a></li></ul>
+            <ul><li><a href="https://mrniftyfire.github.io/Chess-Achievements-Guide/CAP.html">Chess Achievements</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Amoung Us. (Small).png" alt="Among Us">Among Us</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Among-Us-Site/Among%20Us.html">Among Us Page</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Prodigy (Small).png" alt="Prodigy">Prodigy</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Prodigy-Site/Prodigy.html">Prodigy Page</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="UV Icon.png" alt="UV">UV</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Uncommon-Videos/Random%20Page.html">Uncommon Videos</a></li></ul>
+    </details>
+
+    <details>
+      <summary><img src="Pocket_Champs (Small).png" alt="Pocket Champs">PC</summary>
+      <ul><li><a href="https://mrniftyfire.github.io/Pocket-Champs-Site/Pocket%20Champs.html">Pocket Champs</a></li></ul>
+    </details>
+  </div>
+
+  <!-- Main Chess content -->
+  <div class="container">
+<h1>Minecraft Achievements Guide</h1>
+<p>
+Welcome to the ultimate guide for unlocking every achievement in Minecraft! 🏆🌍⛏️<br><br>
+Achievements and advancements are epic milestones 🎯✨ that celebrate your exploration 🧭, creativity 🎨, and survival 🛡️ in the blocky world.  
+From crafting your very first tool 🪓, to conquering the Nether 🔥🌋, to defeating the Ender Dragon 🐉🏰 — each one tells the story of your Minecraft journey.<br><br>
+<strong>Just a quick message, thanks to all who videos were used <br>
+Most of the videos being from @minecraftswagger130 Thanks and to all rest!</strong>
+<br>
+<br>✨ Click on any achievement icon below 🖱️🖼️ to see exactly what you need to do to earn it.  
+Some are quick builds ⚡🏠, while others will take patience ⏳, skill 🧠, and a lot of mining ⛏️💎.  
+<br>Whether you’re a beginner crafting your first pickaxe 🪓🌱 or a veteran aiming for 100% completion 🏅🥇,  
+this guide will help you stay on track and unlock them all! 🔓🎉<br><br>
+Ready to begin your path to full achievement mastery? 🚀🗺️ Let’s dig in! ⛏️💎
+</p>
+<div style="text-align:center; background: #222222; padding: 15px; border-radius: 10px; max-width: 700px; margin: 20px auto;">
+  <h2>🔑 Achievement Key</h2>
+  <p>
+    🧑‍🤝‍🧑 Easier with friend(s) &nbsp;&nbsp;
+    <br> 🪲 Bugged &nbsp;&nbsp;
+    <br> 🎮 Playstation Only &nbsp;&nbsp;
+    <br> 🔢 Progressive Achievement
+    <br>🟩🟨🟧🟥⬛ Difficulty: Easy → Hard
+  </p>
+</div>
+
+
+
+
+
+    <h2> Get Every Achievement!</h2>
+<div class="icon-grid">
+    <a href="https://youtu.be/jN68p7aCflE?si=U6mmKudFBEe6cNim" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Awarded All Trophies (Playstation).png" alt="Acquire Hardware" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Awarded All Trophies (Playstation) 🎮🔢 ⬛</span>
+  </a>
+  <a href="https://youtu.be/-NDRGJHVlk4?si=I3Su5mbAF_o87Cjm" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Taking Inventory.png" alt="Acquire Hardware" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Taking Inventory 🟩</span>
+  </a>
+  <a href="https://youtu.be/ce90OoluqL8?si=KFma5OZPO2KNplrT" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Getting Wood.png" alt="Adventuring Time" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Getting Wood 🟩</span>
+  </a>
+  <a href="https://youtu.be/boZhjGqtm-A?si=vttixCUuztsrxEIP" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Benchmaking.png" alt="Ahoy!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Benchmaking 🟩</span>
+  </a>
+  <a href="https://youtu.be/WuxgarCXq2Y?si=yz14jFwtE56-xhsF" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Time To Mine.png" alt="Alternative Fuel" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Time To Mine 🟩</span>
+  </a>
+  <a href="https://youtu.be/Ob58fesv6Yk?si=F90HdHrjpjkW4VRd" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Hot Topic.png" alt="Archer" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Hot Topic 🟩</span>
+  </a>
+  <a href="https://youtu.be/OsWtVhQtkVQ?si=TaUFJ_FYVnJPTEVt" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Acquire Hardware.png" alt="Artificial Selection" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Acquire Hardware 🟩</span>
+  </a>
+  <a href="https://youtu.be/-psnn77kzkA?si=1xuCJ_0ixa9eg_2I" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Time To Farm.png" alt="Atlantis" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Time To Farm 🟩</span>
+  </a>
+  <a href="https://youtu.be/_tBG9Dt0hEg?si=JPUjGM-OXY5pr3zt" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Bake Bread.png" alt="Bake Bread" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Bake Bread 🟩</span>
+  </a>
+  <a href="https://youtu.be/rCpN9BODkps?si=O3hpoJ_x2TrhVOh9" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The Lie.png" alt="Beam Me Up" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The Lie 🟨</span>
+  </a>
+  <a href="https://youtu.be/hRvpo3jdHYM?si=HuYrqqreoTLn3j0T" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Getting An Upgrade.png" alt="Bee Our Guest" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Getting An Upgrade 🟩</span>
+  </a>
+  <a href="https://youtu.be/w9M1dg8GdHo?si=suvA4Usb2zVbA-MD" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Delicious Fish.png" alt="Benchmaking" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Delicious Fish 🟩</span>
+  </a>
+  <a href="https://youtu.be/uEqypmcq4C8?si=P5uTShDVUl3OMtsU" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="On A Rail.png" alt="Birthday Song" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">On A Rail 🟥</span>
+  </a>
+  <a href="https://youtu.be/bYPoh2tKjQE?si=dMrLC4w4dw5x4z6q" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Time To Strike.png" alt="Body Guard" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Time To Strike 🟩</span>
+  </a>
+  <a href="https://youtu.be/zKS5o8dkvH0?si=Ai9Ss015HVOq_r7O" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Monster Hunter.png" alt="Bullseye" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Monster Hunter 🟨</span>
+  </a>
+  <a href="https://youtu.be/nrRuMviJFis?si=n3vPhMcUxVbOzkJg" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Cow Tipper.png" alt="Buy Low Sell High" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Cow Tipper 🟩</span>
+  </a>
+  <a href="https://youtu.be/6GowQpctrF0?si=-LontveD39VLt71X" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="When Pigs Fly.png" alt="Camouflage" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">When Pigs Fly 🟧</span>
+  </a>
+  <a href="https://youtu.be/RwOI7ifGApE?si=lsLDeeIo8YM8ENTN" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Leader Of The Pack.png" alt="Careful Restoration" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Leader Of The Pack 🟧</span>
+  </a>
+  <a href="https://youtu.be/agZ-fmBs2_o?si=UdTZnkpW92X6Ni5g" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="MOAR Tools.png" alt="Castaway" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">MOAR Tools 🟨</span>
+  </a>
+  <a href="https://youtu.be/7yHd8rHdedE?si=KyVdXXhTFH3Ncjw5" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Dispense With This.png" alt="Caves And Cliffs" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Dispense With This 🟨</span>
+  </a>
+  <a href="https://youtu.be/UcOmDOP8EAU?si=wTf04meULCCKx5w6" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Into The Nether.png" alt="Change Of Sheets (Playstation)" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Into The Nether 🟧</span>
+  </a>
+  <a href="https://youtu.be/cAmeV_ESs_U?si=myA1Rm2tmolDeZxo" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sniper Duel.png" alt="Cheating Death" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sniper Duel 🧑‍🤝‍🧑🟧</span>
+  </a>
+  <a href="https://youtu.be/5xU_RXW-tNM?si=_dnstwFhFkZ75Onl" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="DIAMONDS!.png" alt="Chestful Of Cobblestone" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">DIAMONDS! 🟧</span>
+  </a>
+  <a href="https://youtu.be/U1bNx3O4_iY?si=OLQ7VvUvqAAtuTcU" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Return To Sender.png" alt="Cover Me In Debris" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Return To Sender 🟧</span>
+  </a>
+  <a href="https://youtu.be/Z9RfUsSjnFw?si=AOJjlenMJb9_ohYX" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Into Fire.png" alt="Cow Tipper" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Into Fire 🟧</span>
+  </a>
+  <a href="https://youtu.be/wJC5AgltJdg?si=JezqzhG11swIcWxp" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Local Brewery.png" alt="Crafters Crafting Crafters" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Local Brewery 🟧</span>
+  </a>
+  <a href="https://youtu.be/dMUJ1iNYMw0?si=SY54xFg9TeyMGLow" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The End.png" alt="Delicious Fish" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The End? 🟥</span>
+  </a>
+  <a href="https://youtu.be/6fiMmtkAjYE?si=BocjAv-MgVPGU1IM" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The End (Dragon Beaten).png" alt="Diamonds To You!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The End 🟥</span>
+  </a>
+  <a href="https://youtu.be/l1RMwXpgG4g?si=I01JHod-GKEJIvzK" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Enchanter.png" alt="DIAMONDS!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Enchanter 🟧</span>
+  </a>
+  <a href="https://youtu.be/X9uZyjfNWQo?si=0LYKMuHF8H-IsCxN" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Overkill.png" alt="Disenchanted" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Overkill 🟧</span>
+  </a>
+  <a href="https://youtu.be/RS5rpWWjbsI?si=4LAFi3bJT1h8PHb2" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Librarian.png" alt="Dispense With This" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Librarian 🟨</span>
+  </a>
+  <a href="https://youtu.be/w7qxLA6B3gI?si=u4-fOn9ETUI19U4h" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Adventuring Time.png" alt="Do A Barrel Roll" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Adventuring Time 🟥</span>
+  </a>
+  <a href="https://youtu.be/F_etio-qEf4?si=Nc3n_EbDc7UiORmN" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Repopulation.png" alt="Dry Spell" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Repopulation 🟩</span>
+  </a>
+  <a href="https://youtu.be/eiqUGhm6XVc?si=UEaTUAyRpeOO_bcF" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Diamonds To You!.png" alt="Enchanter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Diamonds To You! 🧑‍🤝‍🧑🟧</span>
+  </a>
+  <a href="https://youtu.be/5tWoF0lf9hE?si=DYGCMtCKbeGKYMbA" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Pork Chop.png" alt="Every Achievement Background" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Pork Chop 🟩</span>
+  </a>
+  <a href="https://youtu.be/HpY7dlKKc5Q?si=1PwG61enbs_ZRAay" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Passing The Time.png" alt="Feeling Ill" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Passing The Time 🟧</span>
+  </a>
+  <a href="https://youtu.be/EPfj1BJMnv4?si=vsTya9S4XREQx7m7" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Archer.png" alt="Feels Like Home" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Archer 🟧</span>
+  </a>
+  <a href="https://youtu.be/S6VbmaYtL7k?si=6QQWbVG3wGEks9Iq" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The Haggler.png" alt="Free Diver" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The Haggler 🟧</span>
+  </a>
+  <a href="https://youtu.be/OKilgkc0WcI?si=LeCNzqXWf3GzY6go" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Pot Planter.png" alt="Freight Station" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Pot Planter 🟨</span>
+  </a>
+  <a href="https://youtu.be/BHuRTKFAh7w?si=aWVAW0wA-QhLNnai" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Its A Sign!.png" alt="Fruit On The Loom" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Its A Sign! 🟩</span>
+  </a>
+  <a href="https://youtu.be/-d4CvJwXidY?si=68JJtxBTYg_5bfyC" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Iron Belly.png" alt="Getting An Upgrade" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Iron Belly 🟧</span>
+  </a>
+  <a href="https://youtu.be/-PvfFIjLiCI?si=47GmSN9wjGROhpk7" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Have A Shearful Day.png" alt="Great View From Up Here" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Have A Shearful Day 🟨</span>
+  </a>
+  <a href="https://youtu.be/3HaexblZQFI?si=NM1iBLRGp0y63RYc" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Rainbow Collection.png" alt="Have A Shearful Day" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Rainbow Collection 🟧</span>
+  </a>
+  <a href="https://youtu.be/dEeg_y3ETcY?si=Ka1PvqSV86Kf6Vcq" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Staying Frosty.png" alt="Heart Transplanter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Stayin' Frosty 🟧</span>
+  </a>
+  <a href="https://youtu.be/aMRNDwZG9x0?si=cxw01lctoebfuYTt" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Chestful Of Cobblestone.png" alt="Hot Topic" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Chestful Of Cobblestone 🟥</span>
+  </a>
+  <a href="https://youtu.be/9wqMmmtb_fk?si=qINcg2k-q7BcGiR8" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Renewable Energy.png" alt="Hot Tourist Destination" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Renewable Energy 🟨</span>
+  </a>
+  <a href="https://youtu.be/zFQQxFsnU4Q?si=0upntDV15mATo8lq" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Music To My Ears (Playstation).png" alt="I Am A Marine Biologist" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Music To My Ears (Playstation) 🎮🟧</span>
+  </a>
+  <a href="https://youtu.be/4zf6M2Yx1GQ?si=wb3giVC4yYOD1xXl" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Body Guard.png" alt="Inception" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Body Guard 🟧</span>
+  </a>
+  <a href="https://youtu.be/zxTD4zsbVp4?si=gQZvaq68YzVzNis6" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Iron Man.png" alt="Into Fire" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Iron Man 🪲🟧</span>
+  </a>
+  <a href="https://youtu.be/xnUrmYHaRFU?si=PDHpsDcfjPdIFWdR" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Zombie Doctor.png" alt="Into The Nether" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Zombie Doctor 🟧</span>
+  </a>
+  <a href="https://youtu.be/ciOTlctlcLU?si=XzaSIjxPE8FYyJzf" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Lion Hunter.png" alt="Iron Belly" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Lion Hunter 🟧</span>
+  </a>
+  <a href="https://youtu.be/KSGrPhlQF3I?si=PL4N2yxBGVYUSbcK" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The Beaconator.png" alt="Iron Man" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The Beaconator ⬛</span>
+  </a>
+  <a href="https://youtu.be/p2I2NpJ90mo?si=LgweqSDrj5OJt3qA" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Overpowered.png" alt="It Spreads" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Overpowered 🟥</span>
+  </a>
+  <a href="https://youtu.be/mGkbCuYnLa0?si=SokfQ70JVRFSqOJq" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Tie Dye Outfit.png" alt="Its A Sign!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Tie Dye Outfit 🟨</span>
+  </a>
+  <a href="https://youtu.be/Tj6DK8VNvNE?si=hxO20l_x4N-M9sHC" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Trampoline.png" alt="Ive Got A Bad Feeling About This" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Trampoline 🟨</span>
+  </a>
+  <a href="https://youtu.be/4sZ7bsi_6Ic?si=hlUO2tmQHTUiYWB8" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The End Again.png" alt="Leader Of The Pack" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The End...Again... 🟧</span>
+  </a>
+  <a href="https://youtu.be/o6BgwG7GSr0?si=ec2tVA5eHvWF00Zm" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="You Need A Mint.png" alt="Let It Go!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">You Need A Mint 🟧</span>
+  </a>
+  <a href="https://youtu.be/vdbdhSgQ2sk?si=C3LOYO2k7h542VUl" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Super Sonic.png" alt="Librarian" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Super Sonic 🟥</span>
+  </a>
+  <a href="https://youtu.be/HLsAwrUZxSM?si=r3K2-oCghZh147uV" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Dry Spell.png" alt="Lion Hunter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Dry Spell 🟧</span>
+  </a>
+  <a href="https://youtu.be/RkKATnoXr2E?si=ylob7PHkOc-WTfxf" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Free Diver.png" alt="Local Brewery" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Free Diver 🟧</span>
+  </a>
+  <a href="https://youtu.be/JY1ukJOr4qs?si=WJ4RYDK5ap3_20ka" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Super Fuel.png" alt="Map Room" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Super Fuel 🟨</span>
+  </a>
+  <a href="https://youtu.be/q_N0-aPTBzA?si=7klBpC0Oa5uo2lDf" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Saddle Up.png" alt="Master Trader" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Saddle Up 🟨</span>
+  </a>
+  <a href="https://youtu.be/WdMUZ2mAq9s?si=1tWSDzUN3xvJx5D7" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Taste Of Your Own Medicine.png" alt="Me Gold!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Taste Of Your Own Medicine 🟧</span>
+  </a>
+  <a href="https://youtu.be/15ziz9sbPrw?si=N5VX70DbbNqZ7IQ3" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Beam Me Up.png" alt="MOAR Tools" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Beam Me Up 🟧</span>
+  </a>
+  <a href="https://youtu.be/0WSH4TGSX1w?si=LQw-WUAdylA2DlLA" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Map Room.png" alt="Monster Hunter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Map Room 🟧</span>
+  </a>
+  <a href="https://youtu.be/8Jra3QtieyE?si=SS2uefYs9fl_01ZF" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Camouflage.png" alt="Moskstraumen" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Camouflage 🟥</span>
+  </a>
+  <a href="https://youtu.be/ixFOmeOfPiI?si=mTkNlxeg4E69tAif" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The Deep End.png" alt="Music To My Ears (Playstation)" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The Deep End 🟥</span>
+  </a>
+  <a href="https://youtu.be/whsGp2r8S4o?si=iIYfeXAU0uEK5C4o" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Great View From Up Here.png" alt="On A Rail" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Great View From Up Here 🟥</span>
+  </a>
+  <a href="https://youtu.be/3GbI6_zQ9kw?si=WL7fbVzm5A2nRz1H" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Change Of Sheets (Playstation).png" alt="One Pickle Two Pickle Sea Pickle Four" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Change Of Sheets (Playstation) 🎮🟨</span>
+  </a>
+  <a href="https://youtu.be/u-hAxMdGp6o?si=4Orh599HLA7LR3pj" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Cheating Death.png" alt="Oooh Shiny" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Cheating Death 🟧</span>
+  </a>
+  <a href="https://youtu.be/lhyyUyO6xdY?si=CfFBCe6MWLxvPlf3 " target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="So I Got That Going For Me.png" alt="Organizational Wizard" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">So I Got That Going For Me 🟧</span>
+  </a>
+  <a href="https://youtu.be/hwILDliHNDg?si=nn7ZZmEt1CiIGmx4" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Let It Go!.png" alt="Overkill" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Let It Go! 🟧</span>
+  </a>
+  <a href="https://youtu.be/Kae8djkVmGs?si=bvOosTguCCni0XVT" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Feeling Ill.png" alt="Overpowered" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Feeling Ill 🟧</span>
+  </a>
+  <a href="https://youtu.be/xI9jxbGJSnM?si=PUiVD4DwcJIHXb0l" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="One Pickle Two Pickle Sea Pickle Four.png" alt="Passing The Time" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">One Pickle Two Pickle Sea Pickle Four 🟨</span>
+  </a>
+  <a href="https://youtu.be/QTKYEi42Ih4?si=6bXDorqvQ012ZVXK" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Alternative Fuel.png" alt="Planting The Past" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Alternative Fuel 🟨</span>
+  </a>
+  <a href="https://youtu.be/rwHSJFl1Txc?si=GeptTN93I_mXyjZ7" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Moskstraumen.png" alt="Plethora Of Cats" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Moskstraumen 🟧</span>
+  </a>
+  <a href="https://youtu.be/nekT7jSvnYk?si=waUjmDo20n9U9tZA" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Castaway.png" alt="Pork Chop" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Castaway 🪲🟧</span>
+  </a>
+  <a href="https://youtu.be/FwkcrNyXTtQ?si=ks-ZVzDqeCPKA-yP " target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sleep With The Fishes.png" alt="Pot Planter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sleep With The Fishes 🟧</span>
+  </a>
+  <a href="https://youtu.be/xYO7HOKwDgc?si=ED93zwp4McP9o_un" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Echolocation.png" alt="Echolocation" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Echolocation 🟧</span>
+  </a>
+  <a href="https://youtu.be/FHVam4tqnZs?si=YNB_8Ppval6AJXn5" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Do A Barrel Roll.png" alt="Rainbow Collection" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Do A Barrel Roll 🟧</span>
+  </a>
+  <a href="https://youtu.be/9wqMmmtb_fk?si=NPuSU3HcYwvpS2fN" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Renewable Energy.png" alt="Renewable Energy" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Renewable Energy 🟨</span>
+  </a>
+  <a href="https://youtu.be/WPrVk2MfEIc?si=1GnqfPc1yP1AONzA" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="I Am A Marine Biologist.png" alt="Repopulation" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">I Am A Marine Biologist 🟨</span>
+  </a>
+  <a href="https://youtu.be/xQZ4K-zcdFU?si=udrzVT65QpuAg6OE" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Ahoy!.png" alt="Return To Sender" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Ahoy! 🟧</span>
+  </a>
+  <a href="https://youtu.be/IL6F32Etn_k?si=DoRnBxogxrb6RH4n" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Top Of The World.png" alt="Revaulting" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Top Of The World 🟥</span>
+  </a>
+  <a href="https://youtu.be/zvAcR2a3sNs?si=KBSF4HKyVNaJLUsf" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Where Have You Been.png" alt="Saddle Up" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Where Have You Been 🟨</span>
+  </a>
+  <a href="https://youtu.be/YSVD7K4AJZM?si=vvo014FvqAWee6vE" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Zoologist.png" alt="Sail The 7 Seas" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Zoologist 🟧</span>
+  </a>
+  <a href="https://youtu.be/hwlBQW0vdvY?si=N-pvkphhXWJlo0Dm" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Atlantis.png" alt="Sleep With The Fishes" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Atlantis 🟧</span>
+  </a>
+  <a href="https://youtu.be/lJQXvQkSimA?si=-cI7XCerjROArOFC" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Organizational Wizard.png" alt="Smelt Everything" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Organizational Wizard 🟧</span>
+  </a>
+  <a href="https://youtu.be/nL94ZDvD7Fw?si=Dhr4A31wQLuZSqZx" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Fruit On The Loom.png" alt="Smithing With Style" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Fruit On The Loom 🟥</span>
+  </a>
+  <a href="https://youtu.be/8EJa4Jsh9U0?si=iT9BJNGQwoXldqH0" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Plethora Of Cats.png" alt="Sneak 100" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Plethora Of Cats 🟥</span>
+  </a>
+  <a href="https://youtu.be/Dml_pz7inQk?si=UiQzpcMoIm7jyW-C" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sail The 7 Seas.png" alt="Sniper Duel" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sail The 7 Seas 🪲🟥</span>
+  </a>
+  <a href="https://youtu.be/8adzbf2Cj9M?si=9aGDeDse17jMLfi1" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Buy Low Sell High.png" alt="So I Got That Going For Me" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Buy Low, Sell High 🟧</span>
+  </a>
+  <a href="https://youtu.be/vXmRElNg15I?si=TkYpisQt8ZqF0t66" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Disenchanted.png" alt="Sound Of Music" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Disenchanted 🟨</span>
+  </a>
+  <a href="https://youtu.be/eYQrI7bCfHM?si=Yt-dPl10f5Lx5oKh" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Ive Got A Bad Feeling About This.png" alt="Sound The Alarm" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">I've Got A Bad Feeling About This 🟧</span>
+  </a>
+  <a href="https://youtu.be/7OpJl-T7P-o?si=XcetnAPBZXnucCRi" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Kill The Beast.png" alt="Star Trader" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Kill The Beast! 🟧</span>
+  </a>
+  <a href="https://youtu.be/EuiHKnPjwxo?si=8URSOBLAVeUtBmVe" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sound The Alarm.png" alt="Stay Hydrated!" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sound The Alarm! 🪲🟨</span>
+  </a>
+  <a href="https://youtu.be/5lLE4VnRgGU?si=pm-BKIS7T5sBi4Hb" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Were Being Attacked.png" alt="Staying Frosty" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">We're Being Attacked! 🟧</span>
+  </a>
+  <a href="https://youtu.be/lwbuwuKWkjw?si=NV9UruxguefFjtR2" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Freight Station.png" alt="Sticky Situation" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Freight Station 🟧</span>
+  </a>
+  <a href="https://youtu.be/O4ZPQgoDXkg?si=q89D72xkESmxW22Y" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Smelt Everything.png" alt="Super Fuel" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Smelt Everything! 🟧</span>
+  </a>
+  <a href="https://youtu.be/z9_68eVRVkA?si=rqqL1dB8eex9bwe3" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Inception.png" alt="Super Sonic" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Inception 🟨</span>
+  </a>
+  <a href="https://youtu.be/TY-nLdTZzYY?si=LY3PVQuVqBufo_iI" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Artificial Selection.png" alt="Taking Inventory" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Artificial Selection 🟧</span>
+  </a>
+  <a href="https://youtu.be/cKZHeAWNwXM?si=nW71-C9wIRe4Ilm-" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Rabbit Season.png" alt="Taste Of Your Own Medicine" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Rabbit Season 🟨</span>
+  </a>
+  <a href="https://youtu.be/AIQYnFH49Aw?si=pX9SaB6DzIVko7vN" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Treasure Hunter.png" alt="The Beaconator" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Treasure Hunter 🟧</span>
+  </a>
+  <a href="https://youtu.be/cCGyOGTXf44?si=oYfswsTojC-n7ln-" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Me Gold!.png" alt="The Beginning (Killed The Wither)" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Me Gold! 🟧</span>
+  </a>
+  <a href="https://youtu.be/_1BdtDi65Go?si=XlmiLBIWHLldJFGP" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Master Trader.png" alt="The Beginning" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Master Trader 🔢⬛</span>
+  </a>
+  <a href="https://youtu.be/xr4h8JvhiY4?si=sXeYS5X442WKLQRo" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Time For Stew.png" alt="The Deep End" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Time For Stew 🧑‍🤝‍🧑🟧</span>
+  </a>
+  <a href="https://youtu.be/uAhiJZSz4Go?si=5yXGDOR_r4cZQg7l" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Bee Our Guest.png" alt="The End (Dragon Beaten)" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Bee Our Guest 🟧</span>
+  </a>
+  <a href="https://youtu.be/zTrJKgKIDAg?si=7QQ0-_yP7ls5iV8P" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Total Beelocation.png" alt="The End Again" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Total Beelocation 🟧</span>
+  </a>
+  <a href="https://youtu.be/CnWvrqtVRto?si=k7Wd182wtIQwjgSC" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sticky Situation.png" alt="The End" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sticky Situation 🟨</span>
+  </a>
+  <a href="https://youtu.be/G-Xy_hwhiVo?si=39LW95O6V3qNtrU0" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Bullseye.png" alt="The Haggler" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Bullseye 🟨</span>
+  </a>
+  <a href="https://youtu.be/EBGC8EQSgrk?si=eyCLofmhWvSxuXdU" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Cover Me In Debris.png" alt="The Healing Power Of Friendship" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Cover Me In Debris ⬛</span>
+  </a>
+  <a href="https://youtu.be/NW1TsCojgew?si=LVw6ZTLzzBXaTbc9" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Oooh Shiny.png" alt="The Lie" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Oooh Shiny 🟧</span>
+  </a>
+  <a href="https://youtu.be/iPDC1HQWNMM?si=N6nLrLrU6iDAsEj7" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Hot Tourist Destination.png" alt="Tie Dye Outfit" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Hot Tourist Destination 🟥</span>
+  </a>
+  <a href="https://www.youtube.com/watch?v=kSP2kJHKV8w" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Whatever Floats Your Goat.png" alt="Time For Stew" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Whatever Floats Your Goat 🟧</span>
+  </a>
+  <a href="https://youtu.be/WNdpER_VJ5o?si=yqgJ_3Yu0fawKRs5" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Wax On Wax Off.png" alt="Time To Farm" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Wax On Wax Off 🟥</span>
+  </a>
+  <a href="https://youtu.be/fNMRaATTrj4?si=byJWytoVnHoqA5Tw" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="The Healing Power Of Friendship.png" alt="Time To Mine" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">The Healing Power Of Friendship 🟥</span>
+  </a>
+  <a href="https://youtu.be/YY7uMcn3IaQ?si=2xjhEQ3WQQiJF-Wx" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Caves And Cliffs.png" alt="Time To Strike" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Caves And Cliffs 🟥</span>
+  </a>
+  <a href="https://youtu.be/sU9kpBwr31g?si=ip2pwn5a94w7y5kH" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Star Trader.png" alt="Top Of The World" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Star Trader 🟥</span>
+  </a>
+  <a href="https://youtu.be/Qlc4j-gJA70?si=TSGsicqotKF36OEU" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sound Of Music.png" alt="Total Beelocation" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sound Of Music 🟧</span>
+  </a>
+  <a href="https://youtu.be/F6uWXaoB-M8?si=LdYy85UKmcm550ZI" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Feels Like Home.png" alt="Trampoline" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Feels Like Home 🟥</span>
+  </a>
+  <a href="https://youtu.be/e2VSiK1dvgc?si=-kC8T0ErF1cEouDU" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="It Spreads.png" alt="Treasure Hunter" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">It Spreads 🟧</span>
+  </a>
+  <a href="https://youtu.be/I3pEgXuDzPY?si=28DsoFuJAfgeU17I" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Birthday Song.png" alt="Wax On Wax Off" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Birthday Song 🟧</span>
+  </a>
+  <a href="https://youtu.be/14cvEkILOlo?si=vtD1NdXBdzIzgOZC" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="With Our Powers Combined.png" alt="Were Being Attacked" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">With Our Powers Combined 🟥</span>
+  </a>
+  <a href="https://youtu.be/tFRf3S6iyhk?si=RZkoUskj1ndJx5hT" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Sneak 100.png" alt="Whatever Floats Your Goat" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Sneak 100 🟧</span>
+  </a>
+  <a href="https://youtu.be/5aAvD6sNjso?si=5fkI-QTgFbE0vNx3" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Planting The Past.png" alt="When Pigs Fly" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Planting The Past 🟥</span>
+  </a>
+  <a href="https://youtu.be/fv_6FxPGqiE?si=WVGcUwOZMKOrztIm" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Careful Restoration.png" alt="Where Have You Been_" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Careful Restoration 🟧</span>
+  </a>
+  <a href="https://youtu.be/EIhEPfzna1o?si=8hehsZZwrtfq7b8H" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Smithing With Style.png" alt="Who Needs Rockets" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Smithing With Style ⬛</span>
+  </a>
+  <a href="https://youtu.be/4xQcI5kWlZ0?si=apDtZAt8r0BQ1mJL" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Who Needs Rockets.png" alt="With Our Powers Combined" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Who Needs Rockets 🟧</span>
+  </a>
+  <a href="https://youtu.be/znUlghlN1tI?si=MXnVjhEfvVLYk6Hk" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Over-Overkill.png" alt="You Need A Mint" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Over-Overkill 🟥</span>
+  </a>
+  <a href="https://youtu.be/egyKCCuou6M?si=8wqkV2tMUaBKTHv4" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Heart Transplanter.png" alt="Zombie Doctor" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Heart Transplanter 🟧</span>
+  </a>
+    <a href="https://youtu.be/MYOd-cK83xE?si=1fbYRI5MNl53knj2" target="_blank" rel="noopener noreferrer" style="text-decoration: none; text-align: center; display: inline-block;">
+    <img src="Stay Hydrated!.png" alt="Zoologist" style="display: block; margin: 0 auto;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Stay Hydrated! 🟧</span>
+  </a>
+</div>
+<h1>Achievement Progression Guide</h1>
+<p>
+Welcome to your achievement journey! 🌟📖<br><br>
+Every milestone is more than just a step forward — it’s proof of your progress 📊, effort 💪, and dedication 🔥.  
+From unlocking your very first achievement 🥉 to completing the full collection 🏆, each progress tier tells a story of growth and perseverance. <br><br>
+✨ Below you’ll see progress icons 🎨, each one representing how far you’ve come.  
+Some achievements are quick wins ⚡, while others demand patience ⏳, creativity 🎨, and determination 💥.  
+<br>Whether you’re just getting started at 0% 🌱 or aiming for 100% mastery 🚀🏁,  
+this guide is here to keep you motivated and moving forward! 🔓🔥<br><br>
+Ready to track your achievements and see how far you can go? 🌍✨ Let’s go see where your at! 🚀🌟
+</p>
+
+
+<div style="text-align: center; margin-top: 20px;">
+  <!-- Stage 1 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="Generic Achievemnt Icon.png" alt="Stage 1" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">Generic Achievemnt Icon</span>
+  </div>
+
+  <!-- Stage 2 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="0-25 Achievement Book.png" alt="Stage 2" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">0%-25% Achievement Book</span>
+  </div>
+
+  <!-- Stage 3 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="25-49 Achievement Book.png" alt="Stage 3" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">25%-49% Achievement Book</span>
+  </div>
+
+  <!-- Stage 4 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="50-74 Achievement Book.png" alt="Stage 4" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">50%-74% Achievement Book</span>
+  </div>
+
+  <!-- Stage 5 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="75-99 Achievement Book.png" alt="Stage 5" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">75%-99% Achievement Book</span>
+  </div>
+
+  <!-- Stage 6 -->
+  <div style="text-decoration: none; display: inline-block; margin: 10px; cursor: default;">
+    <img src="All Achievements.png" alt="Stage 6" style="display: block; margin: 0 auto; width: 80px; height: 80px;">
+    <span style="display: block; margin-top: 5px; color: rgb(255, 255, 255);">All Achievements (100%)</span>
+  </div>
+</div>
+
+
+
+
+
+<center><h1>Downloads Achievements Icons</h1></center>
+<p><center>
+  Looking to grab every single icon at once? 🖼️✨  
+  <br><br>
+  Instead of downloading each one individually, I’ve made it super simple for you.  
+  Just click on the <b>📦 ZIP file icon</b> below, and the entire collection will start downloading right away! ⬇️  
+  <br>
+  Inside the ZIP, you’ll find:  
+  🌟 All icons neatly organized  
+  🗂️ Easy-to-access files ready to use  
+  ⚡ A quick and hassle-free way to save time  
+  <br>
+  Whether you’re collecting them for fun 🎉, using them for projects 🖥️,  
+  or just want to have them all in one place 📚, this ZIP download is the fastest way.  
+  <br>
+  👉 Go ahead and click the ZIP file icon to get started —  
+  your complete set of icons will be ready in seconds! 🚀  
+</center></p>
+
+<center>
+<a href="All Minecraft Achievement Icons.zip" download class="download-button">
+  <img src="Minecraft Icon.png" alt="Download All Icons" class="download-icon">
+  <span class="download-label">Download All Icons</span>
+</a>
+
+<style>
+.download-button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  /* Use the same background color as Legend / Crystal link (you’ll replace this with the exact one) */
+  background-color: #222222; /* example, change to match exactly */
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  
+  /* To fix the size: */
+  width: 140px;   /* <-- adjust this to match their width */
+  /* optionally a fixed height if needed: */
+  /* height: 180px; */
+}
+
+.download-button:hover {
+  transform: scale(1.1);
+  /* Glow effect */
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  /* Slightly stronger background on hover */
+  background-color: #222222;
+}
+
+.download-icon {
+  display: block;
+  margin: 0 auto;
+  width: 100px;  /* match their icon width */
+  height: 100px; /* match their icon height */
+}
+
+.download-label {
+  display: block;
+  margin-top: 5px;
+  color: rgb(255, 255, 255);
+  font-size: 14px; /* you may need to match their font-size */
+  line-height: 1.2;
+}
+</style>
+
+</center>
+
+
+
+  <script>
+    // Accordion: only one open at a time
+    const details = document.querySelectorAll("details");
+    details.forEach((targetDetail) => {
+      targetDetail.addEventListener("toggle", () => {
+        if (targetDetail.open) {
+          details.forEach((detail) => {
+            if (detail !== targetDetail) {
+              detail.open = false;
+            }
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
