@@ -13,21 +13,6 @@
 <button id="music-toggle">
   🎵 Play Music
 </button>
-
-<script>
-  const music = document.getElementById("bg-music");
-  const toggleBtn = document.getElementById("music-toggle");
-
-  toggleBtn.addEventListener("click", () => {
-    if (music.paused) {
-      music.play();
-      toggleBtn.innerText = "🔇 Pause Music";
-    } else {
-      music.pause();
-      toggleBtn.innerText = "🎵 Play Music";
-    }
-  });
-</script>
 <body>  
 
   <!-- Navigation bar -->
@@ -732,25 +717,6 @@ Ready to track your achievements and see how far you can go? 🌍✨ Let’s go 
   <span class="download-label">Download All Icons</span>
 </a>
 </center>
-
-
-
-  <script>
-    // Accordion: only one open at a time
-    const details = document.querySelectorAll("details");
-    details.forEach((targetDetail) => {
-      targetDetail.addEventListener("toggle", () => {
-        if (targetDetail.open) {
-          details.forEach((detail) => {
-            if (detail !== targetDetail) {
-              detail.open = false;
-            }
-          });
-        }
-      });
-    });
-  </script>
-
 </body>
 </html>
 </center>
